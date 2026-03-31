@@ -1,241 +1,160 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* الخلفية */
-body{
-margin:0;
-background:#06070d;
-color:white;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
+<title>Ahmed</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* الشريط العلوي */
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 25px;
-background:#070812;
-position:fixed;
-width:100%;
-z-index:1000;
-border-bottom:1px solid #111;
+body {
+  background: #0b0b0b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: 0.3s;
 }
 
-.logo{
-color:#7a5cff;
-font-weight:700;
-font-size:22px;
+.container {
+  text-align: center;
 }
 
-.top-buttons{
-display:flex;
-gap:10px;
-align-items:center;
+h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
 }
 
-.lang-btn{
-background:#7a5cff;
-border:none;
-color:white;
-padding:10px 18px;
-border-radius:10px;
-font-weight:600;
-cursor:pointer;
+.button {
+  display: block;
+  width: 280px;
+  margin: 12px auto;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #1b1b1b;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-.menu{
-font-size:26px;
-cursor:pointer;
+.button:hover {
+  transform: scale(1.05);
+  background: #8a2be2;
 }
 
-/* القائمة الجانبية */
-.sidebar{
-position:fixed;
-top:0;
-right:-100%;
-width:75%;
-height:100%;
-background:#05060d;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-gap:35px;
-transition:0.4s;
-z-index:999;
+.copy-box {
+  background: #121212;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  display: none;
 }
 
-.sidebar a{
-color:white;
-font-size:22px;
-text-decoration:none;
+textarea {
+  width: 100%;
+  height: 120px;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-/* العنوان الرئيسي */
-.hero{
-text-align:center;
-padding-top:130px;
-animation:fadeUp 1s ease;
+.copy-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #8a2be2;
+  color: white;
+  cursor: pointer;
 }
 
-.hero h1{
-color:#7a5cff;
-font-size:55px;
-margin:0;
+.mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #1b1b1b;
+  padding: 8px 12px;
+  border-radius: 10px;
 }
 
-.hero p{
-color:#aaa;
-margin-top:10px;
+.lang {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #1b1b1b;
+  padding: 8px 12px;
+  border-radius: 10px;
 }
 
-/* الأقسام */
-section{
-padding:90px 25px;
+.footer {
+  margin-top: 25px;
+  opacity: 0.7;
+  font-size: 14px;
 }
 
-/* العناوين */
-.title{
-font-size:35px;
-margin-bottom:30px;
-color:#7a5cff;
-animation:fadeUp 1s ease;
+.light-mode {
+  background: #ffffff;
+  color: black;
 }
 
-/* الكروت */
-.card{
-background:#0b0c14;
-padding:30px;
-border-radius:20px;
-margin-bottom:25px;
-box-shadow:0 0 30px rgba(122,92,255,0.15);
-animation:fadeUp 1s ease;
+.light-mode .button {
+  background: #eee;
+  color: black;
 }
 
-.card h3{
-margin:0;
-font-size:23px;
+.light-mode textarea {
+  background: #f3f3f3;
+  color: black;
+}
+</style></head><body><div class="lang" onclick="toggleLang()">AR / EN</div>
+<div class="mode" onclick="toggleMode()">Dark / Light</div><div class="container"><h1>Ahmed</h1><button class="button" onclick="showScript()" id="btn1">Universal Script</button> <button class="button">Discord Server</button> <button class="button">YouTube Channel</button> <button class="button">Scripts Website</button>
+
+<div class="copy-box" id="scriptBox">
+<textarea id="script">loadstring(game:HttpGet("https://example.com/script.lua"))()</textarea>
+<button class="copy-btn" onclick="copyScript()">Copy Script</button>
+</div><div class="footer"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="margin-top:10px;">
+<path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h13.5l-.6-2.1 1.5 1.4 1.4 1.3L24 24V4c0-2.2-1.8-4-4-4z"/>
+</svg><div>d.e.x_4</div></div></div><script>
+function showScript() {
+  document.getElementById("scriptBox").style.display = "block";
 }
 
-.card p{
-color:#bbb;
-margin-top:10px;
+function copyScript() {
+  var copyText = document.getElementById("script");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  alert("Script copied!");
 }
 
-/* زر */
-.btn{
-margin-top:15px;
-background:#7a5cff;
-border:none;
-color:white;
-padding:12px 20px;
-border-radius:10px;
-cursor:pointer;
-font-weight:600;
+function toggleMode() {
+  document.body.classList.toggle("light-mode");
 }
 
-.btn:hover{
-background:#6847ff;
+let isArabic = true;
+function toggleLang() {
+  const btn = document.getElementById("btn1");
+
+  if (isArabic) {
+    btn.innerText = "سكريبت شامل";
+  } else {
+    btn.innerText = "Universal Script";
+  }
+
+  isArabic = !isArabic;
 }
-
-/* أنيميشن */
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
-</head>
-
-<body>
-
-<nav>
-<div class="logo">Ahmed</div>
-
-<div class="top-buttons">
-<button class="lang-btn">English</button>
-<div class="menu" onclick="openMenu()">☰</div>
-</div>
-</nav>
-
-<div class="sidebar" id="menu">
-<a href="#">الرئيسية</a>
-<a href="#">عنّي</a>
-<a href="#">مشاريعي</a>
-<a href="#">تواصل</a>
-</div>
-
-<div class="hero">
-<h1>Ahmed</h1>
-<p>Discord Bot Developer</p>
-</div>
-
-<section>
-<div class="title">من أنا</div>
-
-<div class="card">
-<h3>Bot Programmer</h3>
-<p>أصنع بوتات ديسكورد احترافية بأنظمة كاملة (Tickets - Moderation - Protection - Systems)</p>
-<button class="btn">تواصل معي</button>
-</div>
-
-<div class="card">
-<h3>Cyrix Bot</h3>
-<p>بوت ديسكورد سيستم متكامل يحتوي على تذاكر احترافية + أوامر إدارة + حماية السيرفر</p>
-<button class="btn">عرض البوت</button>
-</div>
-
-<div class="card">
-<h3>Work With Us - Syrax</h3>
-<p>إذا كنت تريد بوت خاص أو موقع احترافي تواصل معي الآن</p>
-<button class="btn">ابدأ الآن</button>
-</div>
-
-</section>
-
-<section>
-<div class="title">تواصل</div>
-
-<div class="card">
-<h3>Discord</h3>
-<p>Ahmed</p>
-</div>
-
-<div class="card">
-<h3>Instagram</h3>
-<p>Ahmed</p>
-</div>
-
-<div class="card">
-<h3>TikTok</h3>
-<p>Ahmed</p>
-</div>
-
-</section>
-
-<script>
-
-function openMenu(){
-document.getElementById("menu").style.right="0";
-}
-
-</script>
-
-</body>
+</script></body>
 </html>
