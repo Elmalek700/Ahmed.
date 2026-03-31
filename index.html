@@ -1,8 +1,11 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet"><style>
+<title>Ahmed</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
 
 body{
@@ -140,47 +143,138 @@ color:black;
 background:#f3f3f3;
 color:black;
 }
-</style></head><body><header>
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1e1e1e;
+  padding: 12px;
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.5);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+
+.sidebar:hover {
+  transform: translateY(-50%) translateX(-5px);
+}
+
+.lang-btn {
+  background: linear-gradient(45deg, #7c5cff, #9b7dff);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lang-btn:hover {
+  background: linear-gradient(45deg, #9b7dff, #7c5cff);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+</style>
+</head>
+<body>
+<header>
 <div class="logo">Ahmed</div>
-</header><div class="top-buttons">
+</header>
+
+<div class="top-buttons">
 <button onclick="toggleMode()">الوضع الفاتح</button>
 <button onclick="toggleLang()">English</button>
-</div><section class="section">
+</div>
+
+<section class="section">
 <div class="hero-title">Ahmed</div>
 <div class="description">
 موقع Ahmed هو موقع شخصي خاص بمالكـه و أفكاره
 </div>
-</section><section class="section">
-<div class="section-title">سكربتات</div><div class="script-card">
+</section>
+
+<section class="section">
+<div class="section-title">سكربتات</div>
+<div class="script-card">
 <div class="script-title">Universal Script</div>
 <textarea id="script1">loadstring(game:HttpGet("https://example.com/script.lua"))()</textarea>
 <button class="copy-btn" onclick="copyScript('script1')">نسخ السكربت</button>
-</div><div class="script-card">
+</div>
+<div class="script-card">
 <div class="script-title">Meshhal Hub</div>
 <textarea id="script2">loadstring(game:HttpGet("https://example.com/meshhal.lua"))()</textarea>
 <button class="copy-btn" onclick="copyScript('script2')">نسخ السكربت</button>
-</div></section><section class="section">
-<div class="section-title">تواصل</div><div class="contact-card">
+</div>
+</section>
+
+<section class="section">
+<div class="section-title">تواصل</div>
+<div class="contact-card">
 <div class="contact-title">Email</div>
 <p>support@ahmed.xyz</p>
-</div><div class="contact-card">
+</div>
+<div class="contact-card">
 <div class="contact-title">Discord</div>
 <p>d.e.x_4</p>
-</div></section><div class="footer">d.e.x_4</div><script>
+</div>
+</section>
+
+<div class="footer">d.e.x_4</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <button class="lang-btn" onclick="toggleLang()">English</button>
+  <a href="https://discord.gg/YOURSERVER" target="_blank">
+    <img src="https://i.ibb.co/ZpW2g7BD/1000048053-removebg-preview.png" alt="Discord" class="icon">
+  </a>
+  <a href="mailto:support@ahmed.xyz" target="_blank">
+    <img src="https://i.ibb.co/xts3vHLT/1000048055-removebg-preview.png" alt="Gmail" class="icon">
+  </a>
+</div>
+
+<script>
 function copyScript(id){
-var copyText=document.getElementById(id);
-copyText.select();
-copyText.setSelectionRange(0,99999);
-navigator.clipboard.writeText(copyText.value);
-alert("تم نسخ السكربت");
+  var copyText=document.getElementById(id);
+  copyText.select();
+  copyText.setSelectionRange(0,99999);
+  navigator.clipboard.writeText(copyText.value);
+  alert("تم نسخ السكربت");
 }
 
 function toggleMode(){
-document.body.classList.toggle("light-mode");
+  document.body.classList.toggle("light-mode");
 }
 
 function toggleLang(){
-alert("تقدر تعدل النصوص بسهولة داخل الملف");
+  // تغيير النصوص إلى الإنجليزية
+  document.querySelector('.hero-title').textContent = "Ahmed";
+  document.querySelector('.description').textContent = "Ahmed website is a personal site about its owner and ideas";
+  const sectionTitles = document.querySelectorAll('.section-title');
+  sectionTitles[0].textContent = "Scripts";
+  sectionTitles[1].textContent = "Contact";
+  document.querySelectorAll('.copy-btn').forEach(btn => btn.textContent = "Copy Script");
+  const contactTitles = document.querySelectorAll('.contact-title');
+  contactTitles[0].textContent = "Email";
+  contactTitles[1].textContent = "Discord";
+  document.querySelector('.footer').textContent = "d.e.x_4";
 }
-</script></body>
+</script>
+</body>
 </html>
