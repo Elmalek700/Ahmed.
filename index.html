@@ -178,11 +178,13 @@ color:black;
 
 <section class="section">
 <div class="section-title">البوتات</div>
+
 <div class="script-card">
 <div class="script-title">Cyrix Bot </div>
 <textarea id="script1">https://discord.com/oauth2/authorize?client_id=1478856923481772053&permissions=8&scope=bot%20applications.commands</textarea>
 <button class="copy-btn" onclick="copyScript('script1')">نسخ رابط إضافة البوت</button>
 </div>
+
 <div class="script-card">
 <div class="script-title">Syrax Red مع اشتراك معGentleman </div>
 <textarea id="script2">قيد أنشاء</textarea>
@@ -210,7 +212,8 @@ color:black;
 </div>
 </section>
 
-<div class="footer">d.e.x_4</div>
+<!-- الفوتر مع تعديل النص الصغير فقط -->
+<div class="footer">جميع الحقوق محفوظة Ahmed.syrax © 2026</div>
 
 <script>
 function copyScript(id){
@@ -226,17 +229,8 @@ function toggleMode(){
 }
 
 function toggleLang(){
-  // يغير النصوص للإنجليزية
-  document.querySelector('.hero-title').textContent = "Ahmed";
-  document.querySelector('.description').textContent = "Ahmed website is a personal site about its owner and ideas";
-  const sectionTitles = document.querySelectorAll('.section-title');
-  sectionTitles[0].textContent = "Scripts";
-  sectionTitles[1].textContent = "Contact";
-  document.querySelectorAll('.copy-btn').forEach(btn => btn.textContent = "Copy Script");
-  const contactTitles = document.querySelectorAll('.contact-title');
-  contactTitles[0].textContent = "Email";
-  contactTitles[1].textContent = "Discord";
-  document.querySelector('.footer').textContent = "جميع الحقوق محفوظة Ahmed.syrax © 2026";
+  // زر موجود بدون أي تأثير
+  alert("English موجود فقط، الموقع كله عربي");
 }
 </script>
 </body>
