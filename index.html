@@ -121,11 +121,25 @@ border-radius:22px;
 padding:40px;
 margin-bottom:25px;
 text-align:center;
+position:relative;
+}
+
+.contact-card img{
+width:35px;
+height:35px;
+vertical-align:middle;
+margin-bottom:8px;
+cursor:pointer;
+transition: transform 0.3s;
+}
+
+.contact-card img:hover{
+transform: scale(1.2);
 }
 
 .contact-title{
 font-size:20px;
-margin-top:15px;
+margin-top:5px;
 }
 
 .footer{
@@ -142,54 +156,6 @@ color:black;
 .light-mode textarea{
 background:#f3f3f3;
 color:black;
-}
-
-/* ===== Sidebar ===== */
-.sidebar {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: #1e1e1e;
-  padding: 12px;
-  border-radius: 8px 0 0 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  box-shadow: -2px 2px 12px rgba(0,0,0,0.5);
-  z-index: 1000;
-  transition: transform 0.3s;
-}
-
-.sidebar:hover {
-  transform: translateY(-50%) translateX(-5px);
-}
-
-.lang-btn {
-  background: linear-gradient(45deg, #7c5cff, #9b7dff);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.lang-btn:hover {
-  background: linear-gradient(45deg, #9b7dff, #7c5cff);
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.icon:hover {
-  transform: scale(1.2);
 }
 </style>
 </head>
@@ -226,28 +192,25 @@ color:black;
 
 <section class="section">
 <div class="section-title">تواصل</div>
+
 <div class="contact-card">
+<a href="mailto:support@ahmed.xyz" target="_blank">
+<img src="https://i.ibb.co/xts3vHLT/1000048055-removebg-preview.png" alt="Gmail">
+</a>
 <div class="contact-title">Email</div>
 <p>support@ahmed.xyz</p>
 </div>
+
 <div class="contact-card">
+<a href="https://discord.gg/YOURSERVER" target="_blank">
+<img src="https://i.ibb.co/ZpW2g7BD/1000048053-removebg-preview.png" alt="Discord">
+</a>
 <div class="contact-title">Discord</div>
 <p>d.e.x_4</p>
 </div>
 </section>
 
 <div class="footer">d.e.x_4</div>
-
-<!-- Sidebar -->
-<div class="sidebar">
-  <button class="lang-btn" onclick="toggleLang()">English</button>
-  <a href="https://discord.gg/YOURSERVER" target="_blank">
-    <img src="https://i.ibb.co/ZpW2g7BD/1000048053-removebg-preview.png" alt="Discord" class="icon">
-  </a>
-  <a href="mailto:support@ahmed.xyz" target="_blank">
-    <img src="https://i.ibb.co/xts3vHLT/1000048055-removebg-preview.png" alt="Gmail" class="icon">
-  </a>
-</div>
 
 <script>
 function copyScript(id){
@@ -263,7 +226,7 @@ function toggleMode(){
 }
 
 function toggleLang(){
-  // تغيير النصوص إلى الإنجليزية
+  // يغير النصوص للإنجليزية
   document.querySelector('.hero-title').textContent = "Ahmed";
   document.querySelector('.description').textContent = "Ahmed website is a personal site about its owner and ideas";
   const sectionTitles = document.querySelectorAll('.section-title');
