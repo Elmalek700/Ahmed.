@@ -4,17 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmed</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
 
+/* ===== الجسم ===== */
 body{
 background:#05050d;
 color:white;
 overflow-x:hidden;
 transition:0.3s;
+animation: fadePage 1s ease;
 }
 
+/* ===== دخول ===== */
+@keyframes fadePage{
+from{opacity:0; transform: translateY(20px);}
+to{opacity:1; transform: translateY(0);}
+}
+
+/* ===== الهيدر ===== */
 header{
 display:flex;
 justify-content:space-between;
@@ -29,6 +40,7 @@ font-weight:700;
 color:#7c5cff;
 }
 
+/* ===== الأزرار ===== */
 .top-buttons{
 display:flex;
 gap:10px;
@@ -43,18 +55,68 @@ border-radius:14px;
 color:white;
 font-size:14px;
 cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.2s;
 }
 
+.top-buttons button:active{
+transform: scale(0.9);
+}
+
+/* ripple */
+button::after{
+content:"";
+position:absolute;
+width:0;
+height:0;
+background:rgba(255,255,255,0.4);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+opacity:0;
+}
+
+button:active::after{
+width:200px;
+height:200px;
+opacity:1;
+transition:0.5s;
+}
+
+/* ===== السكاشن ===== */
 .section{
 padding:80px 25px;
+opacity:0;
+transform: translateY(40px);
+animation: reveal 1s ease forwards;
 }
 
+.section:nth-child(2){animation-delay:0.2s;}
+.section:nth-child(3){animation-delay:0.4s;}
+.section:nth-child(4){animation-delay:0.6s;}
+
+@keyframes reveal{
+to{
+opacity:1;
+transform: translateY(0);
+}
+}
+
+/* ===== العنوان ===== */
 .hero-title{
 font-size:55px;
 font-weight:700;
 color:#7c5cff;
 margin-bottom:20px;
 text-align:center;
+animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText{
+from{text-shadow:0 0 10px #7c5cff;}
+to{text-shadow:0 0 25px #9b7dff;}
 }
 
 .description{
@@ -64,6 +126,7 @@ color:#cfcfcf;
 line-height:1.8;
 }
 
+/* ===== عناوين ===== */
 .section-title{
 font-size:38px;
 font-weight:700;
@@ -82,11 +145,20 @@ background:#7c5cff;
 border-radius:10px;
 }
 
-.script-card{
+/* ===== الكروت ===== */
+.script-card, .contact-card{
 background:linear-gradient(145deg,#0c0c17,#0a0a12);
 border-radius:22px;
 padding:30px;
 margin-bottom:25px;
+transition: 0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.script-card:hover, .contact-card:hover{
+transform: translateY(-8px) scale(1.02);
+box-shadow: 0 0 25px rgba(124,92,255,0.4);
 }
 
 .script-title{
@@ -94,6 +166,11 @@ font-size:22px;
 margin-bottom:15px;
 }
 
+.script-title:hover{
+color:#9b7dff;
+}
+
+/* ===== textarea ===== */
 textarea{
 width:100%;
 height:130px;
@@ -106,6 +183,7 @@ resize:none;
 margin-bottom:12px;
 }
 
+/* ===== زر النسخ ===== */
 .copy-btn{
 background:linear-gradient(45deg,#7c5cff,#9b7dff);
 border:none;
@@ -113,28 +191,34 @@ padding:10px 18px;
 border-radius:12px;
 color:white;
 cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:0.2s;
 }
 
+.copy-btn:active{
+transform: scale(0.9);
+}
+
+.copy-btn:hover{
+box-shadow: 0 0 15px #7c5cff, 0 0 30px #7c5cff;
+}
+
+/* ===== التواصل ===== */
 .contact-card{
-background:linear-gradient(145deg,#0c0c17,#0a0a12);
-border-radius:22px;
-padding:40px;
-margin-bottom:25px;
 text-align:center;
-position:relative;
 }
 
 .contact-card img{
 width:35px;
 height:35px;
-vertical-align:middle;
 margin-bottom:8px;
 cursor:pointer;
-transition: transform 0.3s;
+transition:0.3s;
 }
 
 .contact-card img:hover{
-transform: scale(1.2);
+transform: scale(1.2) rotate(5deg);
 }
 
 .contact-title{
@@ -142,12 +226,14 @@ font-size:20px;
 margin-top:5px;
 }
 
+/* ===== الفوتر ===== */
 .footer{
 text-align:center;
 padding:40px 0;
 opacity:0.7;
 }
 
+/* ===== الوضع الفاتح ===== */
 .light-mode{
 background:#ffffff;
 color:black;
@@ -159,7 +245,9 @@ color:black;
 }
 </style>
 </head>
+
 <body>
+
 <header>
 <div class="logo">Ahmed</div>
 </header>
@@ -182,13 +270,13 @@ color:black;
 <div class="script-card">
 <div class="script-title">Cyrix Bot </div>
 <textarea id="script1">https://discord.com/oauth2/authorize?client_id=1478856923481772053&permissions=8&scope=bot%20applications.commands</textarea>
-<button class="copy-btn" onclick="copyScript('script1')">نسخ رابط إضافة البوت</button>
+<button class="copy-btn" onclick="copyScript(event,'script1')">نسخ رابط إضافة البوت</button>
 </div>
 
 <div class="script-card">
 <div class="script-title">Syrax Red مع اشتراك معGentleman </div>
 <textarea id="script2">قيد أنشاء</textarea>
-<button class="copy-btn" onclick="copyScript('script2')">قيد انشاء</button>
+<button class="copy-btn" onclick="copyScript(event,'script2')">قيد انشاء</button>
 </div>
 </section>
 
@@ -197,7 +285,7 @@ color:black;
 
 <div class="contact-card">
 <a href="mailto:support@ahmed.com" target="_blank">
-<img src="https://i.ibb.co/xts3vHLT/1000048055-removebg-preview.png" alt="Gmail">
+<img src="https://i.ibb.co/xts3vHLT/1000048055-removebg-preview.png">
 </a>
 <div class="contact-title">Email</div>
 <p>support@ahmed.com</p>
@@ -205,33 +293,46 @@ color:black;
 
 <div class="contact-card">
 <a href="https://discord.gg/YOURSERVER" target="_blank">
-<img src="https://i.ibb.co/ZpW2g7BD/1000048053-removebg-preview.png" alt="Discord">
+<img src="https://i.ibb.co/ZpW2g7BD/1000048053-removebg-preview.png">
 </a>
 <div class="contact-title">Discord</div>
 <p>d.e.x_4</p>
 </div>
+
 </section>
 
-<!-- الفوتر مع تعديل النص الصغير فقط -->
 <div class="footer">جميع الحقوق محفوظة Ahmed.syrax © 2026</div>
 
 <script>
-function copyScript(id){
+
+/* ===== نسخ مع انيميشن ===== */
+function copyScript(event,id){
   var copyText=document.getElementById(id);
-  copyText.select();
-  copyText.setSelectionRange(0,99999);
   navigator.clipboard.writeText(copyText.value);
-  alert("تم نسخ السكربت");
+
+  const btn = event.target;
+  const oldText = btn.innerText;
+
+  btn.innerText = "تم النسخ ✅";
+  btn.style.background = "#22c55e";
+
+  setTimeout(()=>{
+    btn.innerText = oldText;
+    btn.style.background = "";
+  },1500);
 }
 
+/* ===== الوضع ===== */
 function toggleMode(){
   document.body.classList.toggle("light-mode");
 }
 
+/* ===== اللغة ===== */
 function toggleLang(){
-  // زر موجود بدون أي تأثير
-  alert("English موجود فقط، الموقع كله عربي");
+  alert("English موجود فقط 😂");
 }
+
 </script>
+
 </body>
 </html>
